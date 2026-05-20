@@ -78,8 +78,9 @@ const linkClass =
   "inline-flex h-9 items-center justify-center rounded-xl px-3 text-xs font-medium transition-colors ring-focus";
 
 export function TicketCard({ ticket, onDelete }: TicketCardProps) {
+  const [now] = useState(Date.now);
   const countdown = useCountdown(ticket.gameDate);
-  const isFuture = ticket.gameDate.getTime() > Date.now();
+  const isFuture = ticket.gameDate.getTime() > now;
 
   return (
     <article

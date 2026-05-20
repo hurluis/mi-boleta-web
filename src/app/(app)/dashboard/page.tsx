@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { Container } from "@/presentation/components/layout/Container";
 import { PageHeader } from "@/presentation/components/layout/PageHeader";
 import { StatCard } from "@/presentation/components/dashboard/StatCard";
+import { SmartCalendarPanel } from "@/presentation/components/dashboard/SmartCalendarPanel";
 import { TicketCardSkeleton } from "@/presentation/components/tickets/TicketCardSkeleton";
 import { EmptyState } from "@/presentation/components/ui/EmptyState";
 import { Alert } from "@/presentation/components/ui/Alert";
@@ -118,6 +119,8 @@ export default function DashboardPage() {
           }
         />
       </section>
+
+      <SmartCalendarPanel upcomingTickets={stats.upcoming} />
 
       <section className="grid gap-6 lg:grid-cols-2" aria-label="Listados">
         <div className="rounded-2xl border border-soft bg-surface shadow-card">
