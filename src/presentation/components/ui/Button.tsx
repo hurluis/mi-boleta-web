@@ -14,7 +14,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-150 select-none ring-focus disabled:cursor-not-allowed disabled:opacity-60 active:scale-[0.98]";
+  "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-150 select-none ring-focus disabled:cursor-not-allowed disabled:opacity-60 active:scale-[0.98]";
 
 const variants: Record<Variant, string> = {
   primary:

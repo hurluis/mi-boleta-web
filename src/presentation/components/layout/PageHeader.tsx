@@ -17,17 +17,17 @@ export function PageHeader({
   return (
     <div
       className={cn(
-        "mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between",
+        "mb-8 flex flex-col gap-4 rounded-lg border border-soft bg-surface/80 p-5 shadow-card sm:flex-row sm:items-end sm:justify-between",
         className,
       )}
     >
       <div>
         {eyebrow && (
-          <span className="mb-2 inline-block rounded-full bg-brand-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-700 dark:text-brand-200">
+          <span className="mb-2 inline-block rounded-full border border-brand-400/20 bg-brand-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-700 dark:text-brand-200">
             {eyebrow}
           </span>
         )}
-        <h1 className="font-display text-3xl font-semibold text-strong sm:text-4xl">
+        <h1 className="font-display text-3xl font-semibold tracking-tight text-strong sm:text-4xl">
           {title}
         </h1>
         {description && (

@@ -2,6 +2,14 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import {
+  ArrowRight,
+  CalendarDays,
+  Clock3,
+  ListChecks,
+  Plus,
+  Trophy,
+} from "lucide-react";
 import { Container } from "@/presentation/components/layout/Container";
 import { PageHeader } from "@/presentation/components/layout/PageHeader";
 import { StatCard } from "@/presentation/components/dashboard/StatCard";
@@ -42,17 +50,15 @@ export default function DashboardPage() {
   return (
     <Container size="wide" className="space-y-8">
       <PageHeader
-        eyebrow={`Hola, ${user?.name?.split(" ")[0] ?? ""} 👋`}
+        eyebrow={`Hola, ${user?.name?.split(" ")[0] ?? ""}`}
         title="Tu dashboard de la suerte"
         description="Un vistazo rápido a tus boletas activas, sorteos próximos y tu historial."
         actions={
           <Link
             href="/tickets/new"
-            className="inline-flex h-11 items-center gap-2 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 px-5 text-sm font-medium text-white shadow-glow transition-all hover:brightness-110"
+            className="inline-flex h-11 items-center gap-2 rounded-lg bg-gradient-to-br from-brand-500 via-teal-500 to-brand-700 px-5 text-sm font-medium text-white shadow-glow transition-all hover:brightness-110"
           >
-            <svg viewBox="0 0 20 20" className="h-4 w-4" fill="currentColor">
-              <path d="M10 3a1 1 0 0 1 1 1v5h5a1 1 0 1 1 0 2h-5v5a1 1 0 1 1-2 0v-5H4a1 1 0 1 1 0-2h5V4a1 1 0 0 1 1-1Z" />
-            </svg>
+            <Plus className="h-4 w-4" aria-hidden="true" />
             Nueva boleta
           </Link>
         }
@@ -71,59 +77,44 @@ export default function DashboardPage() {
         </Alert>
       )}
 
-      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" aria-label="Resumen">
+      <section
+        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        aria-label="Resumen"
+      >
         <StatCard
           label="Total registradas"
-          value={isLoading ? "—" : stats.tickets.length}
-          hint={`Acumulado en tu cuenta`}
+          value={isLoading ? "..." : stats.tickets.length}
+          hint="Acumulado en tu cuenta"
           tone="brand"
-          icon={
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16M4 12h16M4 17h10" />
-            </svg>
-          }
+          icon={<ListChecks className="h-5 w-5" />}
         />
         <StatCard
           label="Próximos sorteos"
-          value={isLoading ? "—" : stats.upcoming.length}
+          value={isLoading ? "..." : stats.upcoming.length}
           hint="Fechas a futuro"
           tone="gold"
-          icon={
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2}>
-              <rect x="3" y="5" width="18" height="16" rx="2" />
-              <path strokeLinecap="round" d="M8 3v4M16 3v4M3 11h18" />
-            </svg>
-          }
+          icon={<CalendarDays className="h-5 w-5" />}
         />
         <StatCard
           label="Pendientes"
-          value={isLoading ? "—" : stats.pending.length}
+          value={isLoading ? "..." : stats.pending.length}
           hint="Esperando resultado"
           tone="emerald"
-          icon={
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2}>
-              <circle cx="12" cy="12" r="9" />
-              <path strokeLinecap="round" d="M12 7v5l3 2" />
-            </svg>
-          }
+          icon={<Clock3 className="h-5 w-5" />}
         />
         <StatCard
           label="Ganados"
-          value={isLoading ? "—" : stats.won.length}
+          value={isLoading ? "..." : stats.won.length}
           hint={`${stats.lost.length} perdidos`}
           tone="rose"
-          icon={
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8 21h8M12 17v4M7 4h10v3a5 5 0 0 1-10 0V4Zm10 1h3a3 3 0 0 1-3 3M7 5H4a3 3 0 0 0 3 3" />
-            </svg>
-          }
+          icon={<Trophy className="h-5 w-5" />}
         />
       </section>
 
       <SmartCalendarPanel upcomingTickets={stats.upcoming} />
 
       <section className="grid gap-6 lg:grid-cols-2" aria-label="Listados">
-        <div className="rounded-2xl border border-soft bg-surface shadow-card">
+        <div className="rounded-lg border border-soft bg-surface shadow-card">
           <div className="flex items-center justify-between border-b border-soft px-5 py-4">
             <div>
               <h2 className="font-display text-lg font-semibold text-strong">
@@ -135,7 +126,9 @@ export default function DashboardPage() {
               href="/tickets"
               className="text-xs font-semibold text-brand-600 hover:underline dark:text-brand-300"
             >
-              Ver todo →
+              <span className="inline-flex items-center gap-1">
+                Ver todo <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </span>
             </Link>
           </div>
           <ul className="divide-y divide-soft">
@@ -174,7 +167,7 @@ export default function DashboardPage() {
                   action={
                     <Link
                       href="/tickets/new"
-                      className="inline-flex h-10 items-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 px-4 text-sm font-medium text-white shadow-glow"
+                      className="inline-flex h-10 items-center rounded-lg bg-gradient-to-br from-brand-500 via-teal-500 to-brand-700 px-4 text-sm font-medium text-white shadow-glow"
                     >
                       Registrar boleta
                     </Link>
@@ -185,7 +178,7 @@ export default function DashboardPage() {
           </ul>
         </div>
 
-        <div className="rounded-2xl border border-soft bg-surface shadow-card">
+        <div className="rounded-lg border border-soft bg-surface shadow-card">
           <div className="flex items-center justify-between border-b border-soft px-5 py-4">
             <div>
               <h2 className="font-display text-lg font-semibold text-strong">
@@ -197,7 +190,9 @@ export default function DashboardPage() {
               href="/tickets"
               className="text-xs font-semibold text-brand-600 hover:underline dark:text-brand-300"
             >
-              Ver todo →
+              <span className="inline-flex items-center gap-1">
+                Ver todo <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </span>
             </Link>
           </div>
           <ul className="divide-y divide-soft">
@@ -238,7 +233,7 @@ export default function DashboardPage() {
                   action={
                     <Link
                       href="/tickets/new"
-                      className="inline-flex h-10 items-center rounded-xl bg-brand-500/10 px-4 text-sm font-medium text-brand-700 dark:text-brand-200"
+                      className="inline-flex h-10 items-center rounded-lg bg-brand-500/10 px-4 text-sm font-medium text-brand-700 dark:text-brand-200"
                     >
                       Registrar boleta
                     </Link>

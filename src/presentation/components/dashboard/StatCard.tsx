@@ -47,7 +47,7 @@ export function StatCard({
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-soft bg-surface p-5 shadow-card transition-all duration-200 hover:-translate-y-0.5",
+        "group relative overflow-hidden rounded-lg border border-soft bg-surface p-5 shadow-card transition-all duration-200 hover:-translate-y-0.5",
         cfg.border,
       )}
     >
@@ -76,7 +76,7 @@ export function StatCard({
           <div
             aria-hidden="true"
             className={cn(
-              "grid h-11 w-11 flex-shrink-0 place-items-center rounded-xl transition-transform duration-200 group-hover:scale-110",
+              "grid h-11 w-11 flex-shrink-0 place-items-center rounded-lg transition-transform duration-200 group-hover:scale-110",
               cfg.icon,
             )}
           >
