@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { use, useState } from "react";
+import { use, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
+import { Pencil, Trash2 } from "lucide-react";
 import { Container } from "@/presentation/components/layout/Container";
 import { PageHeader } from "@/presentation/components/layout/PageHeader";
 import { Card, CardBody } from "@/presentation/components/ui/Card";
@@ -60,11 +61,16 @@ export default function TicketDetailPage({
             <>
               <Link
                 href={`/tickets/${ticket.id}/edit`}
-                className="inline-flex h-11 items-center rounded-xl border border-soft bg-surface px-4 text-sm font-medium text-strong transition-colors hover:border-brand-400/60"
+                className="inline-flex h-11 items-center gap-2 rounded-lg border border-soft bg-surface px-4 text-sm font-medium text-strong transition-colors hover:border-brand-400/60"
               >
+                <Pencil className="h-4 w-4" aria-hidden="true" />
                 Editar
               </Link>
-              <Button variant="danger" onClick={() => setConfirming(true)}>
+              <Button
+                variant="danger"
+                onClick={() => setConfirming(true)}
+                leftIcon={<Trash2 className="h-4 w-4" />}
+              >
                 Eliminar
               </Button>
             </>
@@ -102,8 +108,11 @@ export default function TicketDetailPage({
             <dl className="grid gap-4 sm:grid-cols-2">
               <Detail label="Fecha del sorteo" value={formatDate(ticket.gameDate)} />
               <Detail label="Valor apostado" value={formatCurrency(ticket.amount)} />
-              <Detail label="Lugar de compra" value={ticket.place ?? "—"} />
-              <Detail label="Última actualización" value={formatRelative(ticket.updatedAt)} />
+              <Detail label="Lugar de compra" value={ticket.place ?? "-"} />
+              <Detail
+                label="Última actualización"
+                value={formatRelative(ticket.updatedAt)}
+              />
             </dl>
 
             {ticket.notes && (
@@ -142,7 +151,7 @@ export default function TicketDetailPage({
   );
 }
 
-function Detail({ label, value }: { label: string; value: React.ReactNode }) {
+function Detail({ label, value }: { label: string; value: ReactNode }) {
   return (
     <div>
       <dt className="text-xs uppercase tracking-wider text-muted">{label}</dt>

@@ -2,7 +2,7 @@ import { Skeleton } from "@/presentation/components/ui/Skeleton";
 
 export function TicketCardSkeleton() {
   return (
-    <div className="flex h-full flex-col rounded-2xl border border-soft bg-surface p-5 shadow-card">
+    <div className="flex h-full flex-col rounded-lg border border-soft bg-surface p-5 shadow-card">
       <Skeleton className="h-5 w-2/3" />
       <div className="mt-3 flex gap-2">
         <Skeleton className="h-6 w-20 rounded-full" />

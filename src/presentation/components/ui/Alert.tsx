@@ -26,7 +26,7 @@ export function Alert({
     <div
       role="alert"
       className={cn(
-        "rounded-xl border px-4 py-3 text-sm font-medium animate-in",
+        "rounded-lg border px-4 py-3 text-sm font-medium animate-in",
         styles[variant],
         className,
       )}

@@ -70,9 +70,9 @@ export default function AdminPage() {
         <TicketFiltersBar
           value={filters}
           onChange={handleFiltersChange}
-          searchPlaceholder="Buscar por título, número, nombre o email…"
+          searchPlaceholder="Buscar por título, número, nombre o email..."
         />
-        <div className="rounded-2xl border border-soft bg-surface p-4 shadow-card">
+        <div className="rounded-lg border border-soft bg-surface p-4 shadow-card">
           <Label htmlFor="filter-userId">Filtrar por usuario (id)</Label>
           <Input
             id="filter-userId"
@@ -99,7 +99,7 @@ export default function AdminPage() {
         </Alert>
       )}
 
-      <div className="overflow-hidden rounded-2xl border border-soft bg-surface shadow-card">
+      <div className="overflow-hidden rounded-lg border border-soft bg-surface shadow-card">
         <div className="hidden md:block">
           <table className="w-full text-sm">
             <thead className="bg-ink-100/60 text-left text-xs uppercase tracking-wider text-muted dark:bg-white/5">
@@ -140,7 +140,10 @@ export default function AdminPage() {
                     </tr>
                   ))
                 : data?.items.map((t) => (
-                    <tr key={t.id} className="hover:bg-ink-100/40 dark:hover:bg-white/[0.03]">
+                    <tr
+                      key={t.id}
+                      className="hover:bg-ink-100/40 dark:hover:bg-white/[0.03]"
+                    >
                       <td className="px-4 py-3">
                         <p className="font-medium text-strong">{t.owner.name}</p>
                         <p className="text-xs text-muted">{t.owner.email}</p>

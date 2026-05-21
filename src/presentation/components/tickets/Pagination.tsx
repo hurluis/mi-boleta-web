@@ -19,10 +19,10 @@ export function Pagination({ meta, onPageChange }: Props) {
   return (
     <nav
       aria-label="Paginación"
-      className="flex flex-col items-center justify-between gap-3 rounded-2xl border border-soft bg-surface px-4 py-3 sm:flex-row"
+      className="flex flex-col items-center justify-between gap-3 rounded-lg border border-soft bg-surface px-4 py-3 sm:flex-row"
     >
       <p className="text-xs text-muted">
-        Mostrando <span className="font-semibold text-strong">{start}</span>–
+        Mostrando <span className="font-semibold text-strong">{start}</span>-
         <span className="font-semibold text-strong">{end}</span> de{" "}
         <span className="font-semibold text-strong">{meta.total}</span>
       </p>

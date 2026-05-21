@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { ListChecks, Plus } from "lucide-react";
 import { Container } from "@/presentation/components/layout/Container";
 import { PageHeader } from "@/presentation/components/layout/PageHeader";
 import {
@@ -78,9 +79,10 @@ export default function TicketsPage() {
         actions={
           <Link
             href="/tickets/new"
-            className="inline-flex h-11 items-center gap-2 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 px-5 text-sm font-medium text-white shadow-glow transition-all hover:brightness-110"
+            className="inline-flex h-11 items-center gap-2 rounded-lg bg-gradient-to-br from-brand-500 via-teal-500 to-brand-700 px-5 text-sm font-medium text-white shadow-glow transition-all hover:brightness-110"
           >
-            + Nueva boleta
+            <Plus className="h-4 w-4" aria-hidden="true" />
+            Nueva boleta
           </Link>
         }
       />
@@ -114,15 +116,11 @@ export default function TicketsPage() {
               ? "Prueba a quitar algún filtro o cambiar tu búsqueda."
               : "Registra tu primera boleta para empezar a llevar el control."
           }
-          icon={
-            <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h10" />
-            </svg>
-          }
+          icon={<ListChecks className="h-6 w-6" />}
           action={
             <Link
               href="/tickets/new"
-              className="inline-flex h-11 items-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 px-5 text-sm font-medium text-white shadow-glow"
+              className="inline-flex h-11 items-center rounded-lg bg-gradient-to-br from-brand-500 via-teal-500 to-brand-700 px-5 text-sm font-medium text-white shadow-glow"
             >
               Registrar boleta
             </Link>

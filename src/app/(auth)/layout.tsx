@@ -2,6 +2,7 @@
 
 import { useEffect, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
+import { CalendarCheck, Search, ShieldCheck } from "lucide-react";
 import { useAuthStore } from "@/presentation/stores/authStore";
 import { Container } from "@/presentation/components/layout/Container";
 import { Logo } from "@/presentation/components/layout/Logo";
@@ -22,11 +23,8 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
     <div className="relative isolate flex min-h-screen flex-col">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
-      >
-        <div className="absolute -top-32 right-1/4 h-72 w-72 rounded-full bg-brand-500/30 blur-3xl" />
-        <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-gold-400/20 blur-3xl" />
-      </div>
+        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(120deg,rgb(124_77_255/0.10),transparent_38%),linear-gradient(315deg,rgb(6_182_212/0.10),transparent_36%)]"
+      />
 
       <header className="border-b border-soft glass">
         <Container size="wide" className="flex h-16 items-center justify-between">
@@ -38,44 +36,38 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
       <main className="flex flex-1 items-center justify-center px-4 py-12">
         <div className="grid w-full max-w-5xl gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div className="hidden lg:block">
-            <p className="inline-block rounded-full bg-brand-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-700 dark:text-brand-200">
+            <p className="inline-block rounded-full border border-brand-400/20 bg-brand-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-700 dark:text-brand-200">
               Tu suerte, organizada
             </p>
-            <h1 className="mt-4 font-display text-4xl font-semibold leading-tight text-strong xl:text-5xl">
-              Nunca más te quedes con la duda de{" "}
-              <span className="bg-gradient-to-br from-brand-500 via-brand-600 to-gold-500 bg-clip-text text-transparent">
-                «¿y si sí me lo gané?»
+            <h1 className="mt-4 font-display text-4xl font-semibold leading-tight text-strong xl:text-6xl">
+              Nunca más pierdas de vista una{" "}
+              <span className="bg-gradient-to-br from-brand-500 via-teal-500 to-gold-500 bg-clip-text text-transparent">
+                boleta importante.
               </span>
             </h1>
-            <p className="mt-4 max-w-md text-base text-muted">
-              Registra cada boleta, rifa o sorteo en segundos. Recibe el estado
-              de tus juegos pendientes, próximos sorteos y un historial
-              completo en un solo lugar.
+            <p className="mt-5 max-w-lg text-base leading-8 text-muted">
+              Registra cada rifa, sorteo o juego ocasional en segundos. Conserva
+              tus números, fechas, valores y resultados en una experiencia clara
+              y lista para revisar.
             </p>
-            <ul className="mt-6 grid gap-3 text-sm text-strong">
-              <li className="flex items-center gap-2">
-                <span aria-hidden="true" className="text-gold-500">
-                  ★
-                </span>
+            <ul className="mt-7 grid max-w-lg gap-3 text-sm text-strong">
+              <li className="flex items-center gap-3 rounded-lg border border-soft bg-surface/70 p-3">
+                <CalendarCheck className="h-5 w-5 text-teal-500" />
                 Dashboard con próximos sorteos
               </li>
-              <li className="flex items-center gap-2">
-                <span aria-hidden="true" className="text-gold-500">
-                  ★
-                </span>
+              <li className="flex items-center gap-3 rounded-lg border border-soft bg-surface/70 p-3">
+                <ShieldCheck className="h-5 w-5 text-emerald-500" />
                 Sesión segura con JWT
               </li>
-              <li className="flex items-center gap-2">
-                <span aria-hidden="true" className="text-gold-500">
-                  ★
-                </span>
+              <li className="flex items-center gap-3 rounded-lg border border-soft bg-surface/70 p-3">
+                <Search className="h-5 w-5 text-gold-500" />
                 Búsqueda y filtros avanzados
               </li>
             </ul>
           </div>
 
           <div className="relative w-full max-w-md justify-self-center">
-            <div className="rounded-3xl border border-soft bg-elevated p-6 shadow-glow sm:p-8 animate-in">
+            <div className="panel-sheen rounded-lg border border-soft p-6 shadow-glow sm:p-8 animate-in">
               {children}
             </div>
           </div>

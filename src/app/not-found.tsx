@@ -18,7 +18,7 @@ export default function NotFound() {
       </p>
       <Link
         href="/"
-        className="mt-6 inline-flex h-11 items-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 px-5 text-sm font-medium text-white shadow-glow"
+        className="mt-6 inline-flex h-11 items-center rounded-lg bg-gradient-to-br from-brand-500 via-teal-500 to-brand-700 px-5 text-sm font-medium text-white shadow-glow"
       >
         Volver al inicio
       </Link>

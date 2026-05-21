@@ -13,7 +13,7 @@ export function Card({
   return (
     <As
       className={cn(
-        "rounded-2xl border border-soft bg-surface shadow-card transition-shadow",
+        "rounded-lg border border-soft bg-surface shadow-card transition-shadow",
         className,
       )}
     >
