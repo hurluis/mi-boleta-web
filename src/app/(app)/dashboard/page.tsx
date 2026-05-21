@@ -14,6 +14,8 @@ import { Container } from "@/presentation/components/layout/Container";
 import { PageHeader } from "@/presentation/components/layout/PageHeader";
 import { StatCard } from "@/presentation/components/dashboard/StatCard";
 import { SmartCalendarPanel } from "@/presentation/components/dashboard/SmartCalendarPanel";
+import { TicketIntelligencePanel } from "@/presentation/components/dashboard/TicketIntelligencePanel";
+import { LotteryVerifierPanel } from "@/presentation/components/dashboard/LotteryVerifierPanel";
 import { TicketCardSkeleton } from "@/presentation/components/tickets/TicketCardSkeleton";
 import { EmptyState } from "@/presentation/components/ui/EmptyState";
 import { Alert } from "@/presentation/components/ui/Alert";
@@ -110,6 +112,10 @@ export default function DashboardPage() {
           icon={<Trophy className="h-5 w-5" />}
         />
       </section>
+
+      <TicketIntelligencePanel tickets={stats.tickets} />
+
+      <LotteryVerifierPanel tickets={stats.tickets} />
 
       <SmartCalendarPanel upcomingTickets={stats.upcoming} />
 
