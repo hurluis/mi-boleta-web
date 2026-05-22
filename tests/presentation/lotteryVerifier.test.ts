@@ -89,4 +89,18 @@ describe("lottery verifier", () => {
     expect(summary.futureWatchCount).toBe(1);
     expect(summary.strongMatchCount).toBe(1);
   });
+
+  it("prioritizes stronger matches in the verification list", () => {
+    const summary = buildLotteryVerifierSummary(
+      [
+        makeTicket({ id: "partial", gameNumber: "9077" }),
+        makeTicket({ id: "exact", gameNumber: "3777" }),
+      ],
+      [{ date: "2026-05-20", results: [draw] }],
+      new Date("2026-05-21T12:00:00.000Z"),
+    );
+
+    expect(summary.verifications[0]?.ticket.id).toBe("exact");
+    expect(summary.verifications[0]?.kind).toBe("Exacta");
+  });
 });

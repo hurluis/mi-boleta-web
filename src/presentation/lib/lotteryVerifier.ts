@@ -190,10 +190,15 @@ export function buildLotteryVerifierSummary(
     .filter((ticket) => normalizeNumber(ticket.gameNumber).length >= 2)
     .filter((ticket) => daysBetween(ticket.gameDate, now) > 0).length;
 
-  const verifications = dueTickets.map((ticket) => {
-    const date = toDateKey(ticket.gameDate);
-    return verifyTicketAgainstDraws(ticket, resultMap.get(date) ?? []);
-  });
+  const verifications = dueTickets
+    .map((ticket) => {
+      const date = toDateKey(ticket.gameDate);
+      return verifyTicketAgainstDraws(ticket, resultMap.get(date) ?? []);
+    })
+    .sort((a, b) => {
+      if (b.confidence !== a.confidence) return b.confidence - a.confidence;
+      return b.ticket.gameDate.getTime() - a.ticket.gameDate.getTime();
+    });
 
   const latestDraws = resultDays
     .flatMap((day) => day.results)

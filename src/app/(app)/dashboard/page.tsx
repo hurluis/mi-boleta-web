@@ -31,11 +31,13 @@ import {
 import { useTicketsQuery } from "@/presentation/hooks/useTickets";
 import { useAuth } from "@/presentation/hooks/useAuth";
 
+const DASHBOARD_PAGE_SIZE = 2000;
+
 export default function DashboardPage() {
   const { user } = useAuth();
   const [now] = useState(() => Date.now());
   const { data, isLoading, isError, error, refetch } = useTicketsQuery({
-    pageSize: 100,
+    pageSize: DASHBOARD_PAGE_SIZE,
   });
 
   const stats = useMemo(() => {
